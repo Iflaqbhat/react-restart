@@ -1,68 +1,15 @@
-import React from 'react'
-
-function Button({ text, handleClick }) {
-  return (
-    <button onClick={handleClick}>
-      {text}
-    </button>
-  );
-}
+import React, { useState } from 'react'
 
 const App = () => {
-
-  // Task 1
-  function showAlert() {
-    alert("Hello from App component");
-  }
-
-  // Task 2
-  function login() {
-    alert("User Logged In");
-  }
-
-  function logout() {
-    alert("User Logged Out");
-  }
-
-  // Task 3
-  function deleteUser(id) {
-    alert(`Deleting user with id: ${id}`);
-  }
-
+  const [count, setCount] = useState(0);
   return (
     <div>
-
-      {/* Task 1 */}
-      <Button
-        text="Show Alert"
-        handleClick={showAlert}
-      />
-
-      <br />
-      <br />
-
-      {/* Task 2 */}
-      <Button
-        text="Login"
-        handleClick={login}
-      />
-
-      <Button
-        text="Logout"
-        handleClick={logout}
-      />
-
-      <br />
-      <br />
-
-      {/* Task 3 */}
-      <Button
-        text="Delete User"
-        handleClick={() => deleteUser(5)}
-      />
-
+      <button onClick={()=>{
+        setCount(count+1)
+      }}>click me  </button>
+      <h1>{count}</h1>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
