@@ -1,25 +1,68 @@
 import React from 'react'
 
-const App = () => {
- function User({name,age}) {
+function Button({ text, handleClick }) {
   return (
-    <h2>
-      <h1>{name}</h1>
-      <p>{age}</p>
-    </h2>
+    <button onClick={handleClick}>
+      {text}
+    </button>
   );
 }
-function Fruits({ items }) {
-  return <h1>{items}</h1>;
-}
+
+const App = () => {
+
+  // Task 1
+  function showAlert() {
+    alert("Hello from App component");
+  }
+
+  // Task 2
+  function login() {
+    alert("User Logged In");
+  }
+
+  function logout() {
+    alert("User Logged Out");
+  }
+
+  // Task 3
+  function deleteUser(id) {
+    alert(`Deleting user with id: ${id}`);
+  }
+
   return (
     <div>
-     
-      <User name="Iflaq bhat" age={25} />
-      <User name = "jhon doe" age={33}/>
-      <Fruits items={["Apple", " Banana", " Cherry"]}/>
+
+      {/* Task 1 */}
+      <Button
+        text="Show Alert"
+        handleClick={showAlert}
+      />
+
+      <br />
+      <br />
+
+      {/* Task 2 */}
+      <Button
+        text="Login"
+        handleClick={login}
+      />
+
+      <Button
+        text="Logout"
+        handleClick={logout}
+      />
+
+      <br />
+      <br />
+
+      {/* Task 3 */}
+      <Button
+        text="Delete User"
+        handleClick={() => deleteUser(5)}
+      />
+
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
