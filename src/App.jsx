@@ -1,38 +1,52 @@
-// import React,{useState} from 'react'
-
-// const App = () => {
-//   const [name,setName]=useState(" hurugfergiu");
-
-//   return (
-//     <div>
-//       <input type="text" value={name} onChange={(e)=>
-//         setName(e.target.value)
-//       }></input>
-//       <h1>{name}</h1>
-//     </div>
-//   )
-// }
-
-// export default App
 import React from 'react'
 
+function CounterDisplay({ count }) {
+  return <h1>Count is {count}</h1>;
+}
+
+function CounterButtons({ count, setCount }) {
+
+  function increase() {
+    setCount(count + 1);
+  }
+
+  function decrease() {
+    setCount(count - 1);
+  }
+
+  return (
+    <div>
+
+      <button onClick={increase}>
+        Increase
+      </button>
+
+      <button onClick={decrease}>
+        Decrease
+      </button>
+
+    </div>
+  );
+}
 
 const App = () => {
-  const[name,setName]=React.useState("");
-  const[email,setEmail]=React.useState("");
-  const[password,setPassword]=React.useState("");
-function handleSubmit(e){
-  e.preventDefault();
-  console.log("form submitted")
-  console.log(name);
-}
+
+  const [count, setCount] = React.useState(0);
+
   return (
-<form onSubmit={handleSubmit}>
-  <input type="text" name="name" placeholder='name' value={name} onChange={(e)=>setName(e.target.value)}></input>
-  <input type="email" name="email" placeholder='email' value={email} onChange={(e)=>setEmail(e.target.value)}></input>
-  <input type="password" name="password" placeholder='password' value={password} onChange={(e)=>setPassword(e.target.value)}  ></input>
-  <button type='submit'>Submit</button>
-</form>  )
+    <div>
+
+      <h1>COUNTER APP</h1>
+
+      <CounterDisplay count={count} />
+
+      <CounterButtons
+        count={count}
+        setCount={setCount}
+      />
+
+    </div>
+  )
 }
 
 export default App
