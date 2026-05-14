@@ -1,17 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 const App = () => {
-  const users=[
- { id: 1, name: "Iflaq" },
- { id: 2, name: "Ali" }
-]
+  const [name,setName]=useState(" hurugfergiu");
 
   return (
-    <div>{users.map((user,index)=>{
-      return (
-        <div key={index}>{user.name }</div>
-      )
-    })}</div>
+    <div>
+      <input type="text" value={name} onChange={(e)=>
+        setName(e.target.value)
+      }></input>
+      <h1>{name}</h1>
+    </div>
   )
 }
 
