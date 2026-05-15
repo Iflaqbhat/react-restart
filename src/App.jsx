@@ -1,25 +1,60 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom'
-import Home from './Home'
-import Contact from './Contact'
-import Login from './Login'
+import React, { useState } from 'react'
 
-const App = () => {
+function App() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleLogin(e) {
+
+    e.preventDefault();
+
+    const response = await fetch(
+      "http://localhost:3000/login",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          email,
+          password
+        })
+        
+      }
+
+    );
+    alert("Login successful!")
+
+    const data = await response.json();
+
+    console.log(data);
+  }
+
   return (
-    <div>
-      <Router>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/contact">Contact </Link>
-          <Link to="/login">Login</Link>
-        </nav>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
-      </Router>
-    </div>
+    <form onSubmit={handleLogin}>
+
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+  {  console.log("Rendered")}
+      <button type="submit">
+        Login
+      </button>
+
+    </form>
   )
 }
 
