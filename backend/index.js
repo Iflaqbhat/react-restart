@@ -1,5 +1,14 @@
-const express = require("express");
-const cors = require("cors");
+const express =
+  require("express");
+
+const cors =
+  require("cors");
+
+const authRoutes =
+  require("./routes/authRoutes");
+
+const noteRoutes =
+  require("./routes/noteRoutes");
 
 const app = express();
 
@@ -7,28 +16,17 @@ app.use(cors());
 
 app.use(express.json());
 
-app.post("/login", (req, res) => {
 
-  const { email, password } = req.body;
+// ROUTES
 
-  if (
-    email === "test@gmail.com" &&
-    password === "123456"
-  ) {
+app.use("/auth", authRoutes);
 
-    return res.json({
-      token: "abcd1234",
-      user: {
-        name: "Iflaq"
-      }
-    });
-  }
+app.use("/notes", noteRoutes);
 
-  return res.status(401).json({
-    message: "Invalid credentials"
-  });
-});
 
 app.listen(3000, () => {
-  console.log("Server running on port 3000");
+
+  console.log(
+    "Server running on port 3000"
+  );
 });
