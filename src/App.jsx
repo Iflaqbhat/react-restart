@@ -1,15 +1,13 @@
 import React from 'react'
 
 const App = () => {
-  const [count, setCount] = React.useState(0)
+  const [text, setText] = React.useState("")
   return (
     <div>
-      <h1>counterApp</h1>
+      <h1>live char counter</h1>
       <div>
-      <h2>Count currently is {count}</h2>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(0)}>Reset</button>
-       <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <input type="text" placeholder =" enter text here ... " value ={text} onChange={(e)=>setText(e.target.value)}></input>
+      <p>Characters: {text.length}</p>
 
       </div>
      </div>
