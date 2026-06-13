@@ -1,35 +1,18 @@
 import React from 'react'
 
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from 'react-router-dom'
-
-import Auth from './pages/Auth'
-import Notes from './pages/Notes'
-
-function App() {
-
+const App = () => {
+  const [count, setCount] = React.useState(0)
   return (
+    <div>
+      <h1>counterApp</h1>
+      <div>
+      <h2>Count currently is {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(0)}>Reset</button>
+       <button onClick={() => setCount(count - 1)}>Decrement</button>
 
-    <BrowserRouter>
-
-      <Routes>
-
-        <Route
-          path='/'
-          element={<Auth />}
-        />
-
-        <Route
-          path='/notes'
-          element={<Notes />}
-        />
-
-      </Routes>
-
-    </BrowserRouter>
+      </div>
+     </div>
   )
 }
 
